@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webdb-deployment
+  namespace: endiaye
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webdb
+  template:
+    metadata:
+      labels:
+        app: webdb
+    spec:
+      containers:
+      - name: webdb
+        image: faliloundiaye/webdb:latest  # Replace with your Docker image
+        ports:
+        - containerPort: 5000
+        env:  # Correct placement of the env field
+        - name: MONGO_URL
+          value: "mongodb://mongodb:27017"  # Connect to MongoDB using KubeDNS
+        resources:
+          requests:
+            cpu: "0.1"  # 1/10 CPU
+            memory: "100Mi"  # 100 MB RAM
+          limits:
+            cpu: "0.2"  # 1/5 CPU
+            memory: "200Mi"  # 200 MB RAM

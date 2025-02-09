@@ -1,0 +1,13 @@
+namespace: endiaye
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "100Mi"
+  limits:
+    cpu: "200m"
+    memory: "200Mi"
+
+database:
+  host: "mongodb"
+  port: "27017"

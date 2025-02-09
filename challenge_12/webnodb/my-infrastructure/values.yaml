@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: your_dockerhub_username/your_image
+  pullPolicy: IfNotPresent
+  tag: latest
+
+mongodb:
+  image: mongo:latest
+  replicaCount: 1
+  username: user
+  password: password
+  database: webdb
+  host: mongodb-service
+  port: 27017
+
+webdb:
+  image: your_dockerhub_username/webdb
+  replicaCount: 1
+  servicePort: 5000
+
+webnodb:
+  image: your_dockerhub_username/webnodb
+  replicaCount: 1
+  servicePort: 5000
+

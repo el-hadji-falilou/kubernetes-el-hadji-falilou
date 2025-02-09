@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:latest
+        resources:
+          requests:
+            cpu: "0.1"  # 1/10 CPU
+            memory: "100Mi"  # 100 MB
+          limits:
+            cpu: "0.2"  # 1/5 CPU
+            memory: "200Mi"  # 200 MB
+        ports:
+        - containerPort: 27017
+        livenessProbe:
+          tcpSocket:
+            port: 27017
+          initialDelaySeconds: 30  # Give time for MongoDB to start
+          periodSeconds: 10  # Check every 10 seconds
+          timeoutSeconds: 5  # Timeout after 5 seconds
+          failureThreshold: 3  # Restart after 3 failures

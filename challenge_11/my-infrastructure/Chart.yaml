@@ -1,0 +1,4 @@
+apiVersion: v2
+name: my-infrastructure
+version: 1.0.0
+description: A Helm chart to deploy webnodb, webdb, and mongodb on Kubernetes

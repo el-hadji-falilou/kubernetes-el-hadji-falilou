@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest      # Using the official MongoDB image (the latest)
+    container_name: mongodb  # The name of the container
+    ports:
+      - "27017:27017"        # Make Mongodb accessible from my localhost
